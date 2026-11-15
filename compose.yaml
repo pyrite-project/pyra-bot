@@ -1,0 +1,26 @@
+services:
+  pyra:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PRIVATE_KEY_PATH: /run/secrets/github_app_private_key
+      DATABASE_PATH: /app/data/pyra.sqlite
+      TEMP_DIRECTORY: /app/data/tmp
+      PORT: "3000"
+    ports:
+      - "127.0.0.1:3000:3000"
+    volumes:
+      - pyra-data:/app/data
+    secrets:
+      - github_app_private_key
+    stop_grace_period: 15m
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  pyra-data:
+
+secrets:
+  github_app_private_key:
+    file: ./data/github-app.pem

@@ -1,0 +1,41 @@
+{
+  "name": "pyra-bot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.test.json",
+    "test": "node --import tsx --test test/*.test.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "start": "node --env-file-if-exists=.env dist/main.js",
+    "test:contract": "node --import tsx --test test/ide-workflow.contract.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.1169.0",
+    "@aws-sdk/lib-storage": "3.1169.0",
+    "@aws-sdk/s3-request-presigner": "3.1169.0",
+    "cookie": "2.0.2",
+    "express": "5.3.0",
+    "probot": "14.3.7",
+    "yauzl": "3.4.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.6",
+    "@types/node": "24.19.2",
+    "@types/supertest": "7.2.1",
+    "@types/yauzl": "3.4.0",
+    "@types/yazl": "3.3.1",
+    "prettier": "3.10.1",
+    "supertest": "7.3.2",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "yaml": "2.9.1",
+    "yazl": "3.3.1"
+  }
+}
